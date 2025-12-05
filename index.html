@@ -60,6 +60,32 @@
             </div>
         </div>
     </section>
+
+    <!-- Products grid (dynamic) -->
+    <section id="products" aria-label="Products" style="padding:40px 20px;">
+        <div class="products-inner">
+            <h2 style="text-align:center; margin-bottom:20px;">Featured Products</h2>
+            <div class="product-grid" id="productGrid">
+                <!-- JS will populate product cards here -->
+            </div>
+            <div id="productsLoading" style="text-align:center; margin-top:18px; color:#666; display:none;">Loading products…</div>
+        </div>
+    </section>
+    <!-- Cart drawer (hidden by default) -->
+    <aside class="cart-drawer" aria-hidden="true">
+        <div class="cart-drawer-header">
+            <h3>Your Cart</h3>
+            <button class="cart-drawer-close" aria-label="Close cart">×</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- items rendered here -->
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total">Total: <span id="cartTotal">$0.00</span></div>
+            <button class="btn checkout">Checkout</button>
+        </div>
+    </aside>
+    <div class="cart-drawer-backdrop" style="display:none" aria-hidden="true"></div>
     <script src="scripts/app.js"></script>
 </body>
 </html>

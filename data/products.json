@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Faux Leather Jacket",
+    "price": 89.99,
+    "description": "Stylish faux leather jacket for everyday wear.",
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_UX679_.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Running Shoes",
+    "price": 59.99,
+    "description": "Comfortable running shoes for all terrains.",
+    "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_UX679_.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Classic Watch",
+    "price": 129.99,
+    "description": "Analog watch with leather strap and water resistance.",
+    "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Wireless Headphones",
+    "price": 39.99,
+    "description": "Noise-cancelling Bluetooth headphones with long battery life.",
+    "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Minimal Backpack",
+    "price": 49.99,
+    "description": "Durable backpack with multiple compartments.",
+    "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UX679_.jpg"
+  }
+]
