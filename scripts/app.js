@@ -135,62 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function openProductModal(product) {
-		// remove existing modal if present
-		const existing = document.querySelector('.modal-overlay');
-		if (existing) existing.remove();
-
-		const overlay = document.createElement('div');
-		overlay.className = 'modal-overlay';
-
-		const modal = document.createElement('div');
-		modal.className = 'modal';
-
-		modal.innerHTML = `
-			<div class="modal-body">
-				<button class="modal-close" aria-label="Close">×</button>
-				<div class="modal-media"><img src="${product.image}" alt="${escapeHtml(product.title)}"></div>
-				<div class="modal-info">
-					<h3>${escapeHtml(product.title)}</h3>
-					<p class="modal-price">${formatPrice(product.price)}</p>
-					<p class="modal-desc">${escapeHtml(product.description || '')}</p>
-					<button class="btn add modal-add">Add to Cart</button>
-				</div>
-			</div>
-		`;
-
-		overlay.appendChild(modal);
-		document.body.appendChild(overlay);
-
-		// focus and event handlers
-		const closeBtn = modal.querySelector('.modal-close');
-		const addBtn = modal.querySelector('.modal-add');
-		closeBtn.focus();
-
-		// focus trap inside modal
-		const focusableSelectors = 'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
-		const focusable = modal.querySelectorAll(focusableSelectors);
-		let firstFocusable = null;
-		let lastFocusable = null;
-		if (focusable.length) { firstFocusable = focusable[0]; lastFocusable = focusable[focusable.length - 1]; }
-
-		function onModalKey(e) {
-			if (e.key === 'Tab' && firstFocusable && lastFocusable) {
-				if (e.shiftKey) {
-					if (document.activeElement === firstFocusable) { e.preventDefault(); lastFocusable.focus(); }
-				} else {
-					if (document.activeElement === lastFocusable) { e.preventDefault(); firstFocusable.focus(); }
-				}
-			}
-			if (e.key === 'Escape') closeModal();
-		}
-
-		function closeModal() { overlay.remove(); modal.removeEventListener('keydown', onModalKey); }
-		modal.addEventListener('keydown', onModalKey);
-
-		overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
-		closeBtn.addEventListener('click', closeModal);
-		addBtn.addEventListener('click', function () { addToCart(product); });
-
+		// Navigate to product detail page
+		window.location.href = `product.html?id=${product.id}`;
 	}
 
 	async function fetchProducts(limit = 12) {
