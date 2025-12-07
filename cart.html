@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Your Cart - ShopName</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="left">
+                <a href="index.html" class="logo" aria-label="ShopName home">
+                    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+                        <circle cx="32" cy="32" r="30" fill="#2b8aef" />
+                        <path d="M20 36c4-8 20-12 24-4-6 0-14 4-18 8s-6 0-6-4z" fill="#fff"/>
+                    </svg>
+                    <span class="brand">ShopName</span>
+                </a>
+            </div>
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="right">
+                <a href="cart.html" class="cart" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                        <path d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h7v-2h-7l1.1-2h5.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.3.12-.47 0-.55-.45-1-1-1h-14.31l-.94-2z" fill="#333"/>
+                    </svg>
+                    <span class="cart-badge" aria-hidden="true">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-page" id="cartPage">
+        <div class="cart-inner">
+            <h1>Your Cart</h1>
+            <div class="cart-contents" id="cartContents">
+                <!-- cart items rendered here -->
+            </div>
+
+            <div class="cart-summary" id="cartSummary">
+                <div class="summary-row">
+                    <span>Total</span>
+                    <strong id="cartTotal">$0.00</strong>
+                </div>
+                <div class="summary-actions">
+                    <a class="btn view" href="index.html">Continue Shopping</a>
+                    <button class="btn add checkout" id="checkoutBtn" disabled>Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal-backdrop" id="checkoutBackdrop" style="display:none;" aria-hidden="true"></div>
+    <div class="checkout-modal" id="checkoutModal" style="display:none;" role="dialog" aria-labelledby="checkoutTitle" aria-modal="true">
+        <div class="checkout-modal-content">
+            <button class="checkout-modal-close" id="checkoutClose" aria-label="Close checkout">×</button>
+            <h2 id="checkoutTitle">Checkout</h2>
+            <form id="checkoutForm" class="checkout-form">
+                <fieldset>
+                    <legend>Shipping Information</legend>
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP Code:</label>
+                        <input type="text" id="zip" name="zip" required>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Payment Information</legend>
+                    <div class="form-group">
+                        <label for="cardName">Card Holder Name:</label>
+                        <input type="text" id="cardName" name="cardName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry (MM/YY):</label>
+                            <input type="text" id="expiry" name="expiry" placeholder="12/25" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV:</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="checkout-actions">
+                    <button type="button" class="btn view" id="checkoutCancel">Cancel</button>
+                    <button type="submit" class="btn add">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container" aria-hidden="true"></div>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/cart.js"></script>
+</body>
+</html>

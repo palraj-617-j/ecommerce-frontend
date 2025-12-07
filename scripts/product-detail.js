@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	// Ensure cart drawer starts hidden with proper aria-hidden state
+	if (cartDrawer) {
+		cartDrawer.setAttribute('aria-hidden', 'true');
+		if (cartBackdrop) cartBackdrop.setAttribute('aria-hidden', 'true');
+	}
+
 	/* ========== Cart Management (Shared with index.html) ========== */
 	function getCart() {
 		try {
@@ -79,13 +85,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		cart.forEach(item => {
 			const el = document.createElement('div');
 			el.className = 'cart-item';
+			const opts = item.selectedVariations ? Object.entries(item.selectedVariations).map(([k,v])=>`<span class="option-badge">${k}: ${v}</span>`).join('') : '';
 			el.innerHTML = `
 				<div class="thumb"><img src="${item.image}" alt="${escapeHtml(item.title)}" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='"></div>
 				<div class="meta">
 					<h4>${escapeHtml(item.title)}</h4>
-					<div class="qty">Qty: ${item.quantity} <button class="qty-dec" data-id="${item.id}">−</button> <button class="qty-inc" data-id="${item.id}">+</button></div>
+					<div class="ci-price">$${item.price.toFixed(2)}</div>
+					${opts ? `<div class="options-display">${opts}</div>` : ''}
+					<div class="qty-controls">
+						<button class="qty-btn qty-dec" data-id="${item.id}">−</button>
+						<span class="qty-display">${item.quantity}</span>
+						<button class="qty-btn qty-inc" data-id="${item.id}">+</button>
+					</div>
 				</div>
-				<div><button class="btn small remove" data-id="${item.id}">Remove</button></div>
+				<button class="btn small remove" data-id="${item.id}">Remove</button>
 			`;
 			container.appendChild(el);
 			total += item.price * item.quantity;
@@ -147,6 +160,21 @@ document.addEventListener('DOMContentLoaded', function () {
 	const cartClose = document.querySelector('.cart-drawer-close');
 	if (cartClose) cartClose.addEventListener('click', closeCartDrawer);
 	if (cartBackdrop) cartBackdrop.addEventListener('click', closeCartDrawer);
+
+	// Drawer checkout button: navigate to cart page or warn if empty
+	const drawerCheckoutBtn = document.getElementById('checkoutBtn');
+	if (drawerCheckoutBtn) {
+		drawerCheckoutBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			const count = getCartCount();
+			if (!count) {
+				alert('Your cart is empty');
+				return;
+			}
+			// Go to the cart page where the full checkout flow/modal is available
+			window.location.href = 'cart.html';
+		});
+	}
 
 	function escapeHtml(str) {
 		return String(str)
@@ -468,6 +496,30 @@ document.addEventListener('DOMContentLoaded', function () {
 		const addBtn = document.getElementById('addToCartBtn');
 		if (!addBtn) return;
 
+		// local toast helper for product page
+		function showToast(text, ms = 2200) {
+			try {
+				let container = document.querySelector('.toast-container');
+				if (!container) {
+					container = document.createElement('div');
+					container.className = 'toast-container';
+					document.body.appendChild(container);
+				}
+
+				const t = document.createElement('div');
+				t.className = 'toast';
+				t.textContent = text;
+				container.appendChild(t);
+
+				setTimeout(() => {
+					t.style.transition = 'opacity .2s, transform .2s';
+					t.style.opacity = '0';
+					t.style.transform = 'translateY(8px)';
+					setTimeout(() => t.remove(), 220);
+				}, ms);
+			} catch (e) { /* ignore */ }
+		}
+
 		addBtn.addEventListener('click', async function () {
 			const qtyInput = document.getElementById('quantityInputDetail');
 			const qty = Math.max(1, parseInt(qtyInput.value) || 1);
@@ -496,8 +548,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				addToCart(cartItem, qty);
 
-				// Show success message
+				// Show success message and toast
 				showSuccess(`Added ${qty} item${qty > 1 ? 's' : ''} to cart!`);
+				showToast(`${qty} item${qty > 1 ? 's' : ''} added to cart`);
 
 				// Reset form
 				qtyInput.value = '1';
