@@ -95,6 +95,60 @@ body {
     line-height: 1;
 }
 
+.auth-link {
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #0b72d1;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    background: #eaf4ff;
+}
+
+.auth-link:hover {
+    background: #d4e9ff;
+    color: #0860c0;
+}
+
+.user-menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-name {
+    font-weight: 700;
+    color: #0f1724;
+    font-size: 13px;
+    padding: 8px 12px;
+    background: #eaf4ff;
+    border-radius: 8px;
+}
+
+.logout-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #fee2e2;
+    background: #fecaca;
+    color: #b91c1c;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #fca5a5;
+    border-color: #fda29b;
+}
+
 .hamburger {
     display: none;
     background: transparent;

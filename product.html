@@ -848,8 +848,8 @@
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#products">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
 
@@ -858,7 +858,15 @@
                     <input type="search" placeholder="Search products..." aria-label="Search products">
                 </form>
 
-                <a href="#" class="cart" aria-label="Shopping cart">
+                <div class="user-menu">
+                    <a href="auth.html" class="auth-link" id="authLink" aria-label="Login or Sign up">👤 Account</a>
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <span class="user-name" id="userName"></span>
+                        <button class="logout-btn" id="logoutBtn" aria-label="Logout">Logout</button>
+                    </div>
+                </div>
+
+                <a href="cart.html" class="cart" aria-label="Shopping cart">
                     🛒
                     <span class="cart-badge" aria-hidden="true">0</span>
                 </a>
@@ -923,5 +931,7 @@
     </footer>
 
     <script src="scripts/product-detail.js"></script>
+
+    <script src="scripts/firebase.js"></script>
 </body>
 </html>

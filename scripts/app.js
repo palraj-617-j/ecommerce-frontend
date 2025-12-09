@@ -1,7 +1,28 @@
 console.log("E-commerce Website Loaded");
 
-// Mobile navigation toggle
+// ============ User Authentication Display ============
 document.addEventListener('DOMContentLoaded', function () {
+	const authLink = document.getElementById('authLink');
+	const userInfo = document.getElementById('userInfo');
+	const userName = document.getElementById('userName');
+	const logoutBtn = document.getElementById('logoutBtn');
+
+	// Check if user is logged in
+	const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+	
+	if (currentUser) {
+		authLink.style.display = 'none';
+		userInfo.style.display = 'flex';
+		userName.textContent = currentUser.name;
+		
+		logoutBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			localStorage.removeItem('currentUser');
+			window.location.reload();
+		});
+	}
+
+	// Mobile navigation toggle
 	const hamburger = document.querySelector('.hamburger');
 	const mainNav = document.querySelector('.main-nav');
 

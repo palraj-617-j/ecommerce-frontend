@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ShopHub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* About Page Styles */
+        .about-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        .about-header p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .about-content-text h2 {
+            font-size: 1.8rem;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        .about-content-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-content-image {
+            background: linear-gradient(135deg, #2b8aef 0%, #27ae60 100%);
+            min-height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <div class="left">
+                <a href="index.html" class="logo" aria-label="ShopHub home">
+                    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+                        <circle cx="32" cy="32" r="30" fill="#2b8aef" />
+                        <path d="M20 36c4-8 20-12 24-4-6 0-14 4-18 8s-6 0-6-4z" fill="#fff"/>
+                    </svg>
+                    <span class="brand">ShopHub</span>
+                </a>
+            </div>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="right">
+                <form class="search" role="search" action="#" onsubmit="return false;">
+                    <input type="search" placeholder="Search products..." aria-label="Search products">
+                </form>
+
+                <div class="user-menu">
+                    <a href="auth.html" class="auth-link" id="authLink" aria-label="Login or Sign up">👤 Account</a>
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <span class="user-name" id="userName"></span>
+                        <button class="logout-btn" id="logoutBtn" aria-label="Logout">Logout</button>
+                    </div>
+                </div>
+
+                <a href="cart.html" class="cart" aria-label="Shopping cart">
+                    🛒
+                    <span class="cart-badge" aria-hidden="true">0</span>
+                </a>
+
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="about-container">
+            <!-- About Header -->
+            <div class="about-header">
+                <h1>About ShopHub</h1>
+                <p>Your trusted online shopping destination for quality products and exceptional service</p>
+            </div>
+
+            <!-- About Content -->
+            <div class="about-content">
+                <div class="about-content-text">
+                    <h2>Our Story</h2>
+                    <p>ShopHub was founded with a simple mission: to make online shopping accessible, affordable, and enjoyable for everyone. We believe that every customer deserves the best shopping experience.</p>
+                    <p>Since our inception, we've grown from a small startup to a trusted platform serving thousands of customers. We're committed to offering a curated selection of high-quality products at competitive prices.</p>
+                </div>
+                <div class="about-content-image">
+                    <div>🛍️ Welcome to ShopHub!</div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <h2 style="text-align: center; margin: 2rem 0;">Why Choose ShopHub?</h2>
+            <div class="about-features">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Quality Products</h3>
+                    <p>We carefully curate every product to ensure it meets our high standards of quality and value.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Fast Shipping</h3>
+                    <p>Get your orders delivered quickly and safely with our reliable shipping partners.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Great Prices</h3>
+                    <p>Enjoy competitive pricing and regular discounts on your favorite products.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure Shopping</h3>
+                    <p>Shop with confidence knowing your personal information is protected.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Customer Support</h3>
+                    <p>Our dedicated team is here to help with any questions or concerns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Easy Returns</h3>
+                    <p>Hassle-free returns within 30 days to keep you satisfied.</p>
+                </div>
+            </div>
+
+            <!-- Mission Section -->
+            <div style="background: #f9f9f9; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                <h2 style="color: #222; margin-bottom: 1rem;">Our Mission</h2>
+                <p style="color: #555; line-height: 1.8;">At ShopHub, we're dedicated to making online shopping seamless and rewarding. Our mission is to connect customers with products they love while providing exceptional service at every step of their journey. We constantly innovate and improve our platform to ensure you have the best shopping experience possible.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <h3>About</h3>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <nav class="footer-links" aria-label="Support navigation">
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <nav class="footer-links" aria-label="Legal navigation">
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/firebase.js"></script>
+</body>
+</html>

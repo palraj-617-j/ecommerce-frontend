@@ -23,9 +23,9 @@
             <nav class="main-nav" aria-label="Main navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html">Products</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
 
@@ -33,6 +33,14 @@
                 <form class="search" role="search" action="#" onsubmit="return false;">
                     <input type="search" placeholder="Search products..." aria-label="Search products">
                 </form>
+
+                <div class="user-menu">
+                    <a href="auth.html" class="auth-link" id="authLink" aria-label="Login or Sign up">👤 Account</a>
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <span class="user-name" id="userName"></span>
+                        <button class="logout-btn" id="logoutBtn" aria-label="Logout">Logout</button>
+                    </div>
+                </div>
 
                 <a href="cart.html" class="cart" aria-label="Shopping cart">
                     <!-- cart SVG -->
@@ -87,5 +95,7 @@
     </aside>
     <div class="cart-drawer-backdrop" style="display:none" aria-hidden="true"></div>
     <script src="scripts/app.js"></script>
+
+    <script src="scripts/firebase.js"></script>
 </body>
 </html>

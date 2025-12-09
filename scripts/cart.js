@@ -1,5 +1,26 @@
 // Cart page logic: renders cart items from localStorage and handles updates
 document.addEventListener('DOMContentLoaded', function () {
+    // User authentication check
+    const authLink = document.querySelector('.auth-link');
+    const userInfo = document.querySelector('.user-info');
+    const userName = document.querySelector('.user-name');
+    const logoutBtn = document.querySelector('.logout-btn');
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+    if (currentUser) {
+        if (authLink) authLink.style.display = 'none';
+        if (userInfo) userInfo.style.display = 'flex';
+        if (userName) userName.textContent = currentUser.name;
+        
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                localStorage.removeItem('currentUser');
+                window.location.reload();
+            });
+        }
+    }
+
     const cartContents = document.getElementById('cartContents');
     const cartTotalEl = document.getElementById('cartTotal');
     const checkoutBtn = document.getElementById('checkoutBtn');

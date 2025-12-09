@@ -1,6 +1,27 @@
 console.log("Product Detail Page Loaded");
 
 document.addEventListener('DOMContentLoaded', function () {
+	// User authentication check
+	const authLink = document.querySelector('.auth-link');
+	const userInfo = document.querySelector('.user-info');
+	const userName = document.querySelector('.user-name');
+	const logoutBtn = document.querySelector('.logout-btn');
+	const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+	if (currentUser) {
+		if (authLink) authLink.style.display = 'none';
+		if (userInfo) userInfo.style.display = 'flex';
+		if (userName) userName.textContent = currentUser.name;
+		
+		if (logoutBtn) {
+			logoutBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+				localStorage.removeItem('currentUser');
+				window.location.reload();
+			});
+		}
+	}
+
 	const productDetailContainer = document.getElementById('productDetailContainer');
 	const cartBadge = document.querySelector('.cart-badge');
 	const cartDrawer = document.querySelector('.cart-drawer');
